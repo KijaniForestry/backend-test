@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +11,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $factories = [
+//            \Database\Factories\FarmerContractFactory::class,
+            \Database\Factories\FarmerFactory::class,
+            \Database\Factories\FarmerGroupFactory::class,
+            \Database\Factories\FarmerPaymentFactory::class,
+            \Database\Factories\FarmerProfileAttributeFactory::class,
+            \Database\Factories\FarmerProfileAttributeValueFactory::class,
+            \Database\Factories\FarmerProfileTemplateAttributeFactory::class,
+            \Database\Factories\FarmerProfileTemplateFieldFactory::class,
+            \Database\Factories\FarmerProfileTemplateFactory::class,
+            \Database\Factories\FarmerProfileValueFactory::class,
+            \Database\Factories\FarmerTemplateAssignmentFactory::class,
+            \Database\Factories\GardenFactory::class,
+            \Database\Factories\ParishFactory::class,
+            \Database\Factories\UserFactory::class,
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($factories as $factory) {
+            $factory::new()->count(10)->create();
+        }
     }
 }
