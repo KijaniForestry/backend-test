@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Farmer>
  */
-class FarmerTestFactory extends Factory
+class FarmerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -44,7 +44,7 @@ class FarmerTestFactory extends Factory
      */
     public function active(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'status' => 'Active',
             'registered_date' => fake()->dateTimeBetween('-1 year', 'now'),
             'has_national_id' => true,
@@ -56,7 +56,7 @@ class FarmerTestFactory extends Factory
      */
     public function pending(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'status' => 'Pending',
             'registered_date' => null,
         ]);
@@ -67,7 +67,7 @@ class FarmerTestFactory extends Factory
      */
     public function institution(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'is_institution' => true,
             'first_name' => fake()->company(),
             'last_name' => fake()->companySuffix(),
